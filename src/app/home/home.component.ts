@@ -8,11 +8,13 @@ import { LoginService } from '../login.service';
 })
 export class HomeComponent implements OnInit {
   message : String="";
+  isLoggedIn : Boolean=false;
 
   constructor( private loginservice : LoginService) { }
 
   ngOnInit() {
     this.loginservice.currentMessage.subscribe(message => this.message = message);
+    this.loginservice.currentLoginStatus.subscribe(isLoggedIn => this.isLoggedIn=isLoggedIn)
   }
 
 }
