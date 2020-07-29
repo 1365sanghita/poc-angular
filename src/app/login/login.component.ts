@@ -9,6 +9,7 @@ import { LoginService } from '../login.service';
 export class LoginComponent implements OnInit {
  public  username : String ;
  public isLoggedIn : Boolean = false;
+ public password :String; 
 
   constructor( private loginservice : LoginService) {   
   }
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
  
   fireEvent(event){
-    this.username = (document.getElementById("username") as HTMLInputElement).value;
+    
     if(this.username.trim() !=""){
       this.loginservice.setUserName(`${this.username}`);
       this.loginservice.setLoginStatus(true);
