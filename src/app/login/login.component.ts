@@ -7,9 +7,10 @@ import { LoginService } from '../login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
- public  username : String ;
+ public  username : String;
  public isLoggedIn : Boolean = false;
  public password :String; 
+
 
   constructor( private loginservice : LoginService) {   
   }

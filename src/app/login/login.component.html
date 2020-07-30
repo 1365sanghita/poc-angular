@@ -2,11 +2,12 @@
   <div id="login">
     <div class="login-page">
       <div class="form">
-        <!-- <form class="login-form">  -->
-          <input type="text" placeholder="username"  [(ngModel)]="username"/>
-          <input type="password" placeholder="password" [(ngModel)]="password"/>
+        <form #userForm="ngForm">
+          <input type="text" #name="ngModel" placeholder="username" name="username" [(ngModel)]="username" class="form-control" required/>
+          {{ name.untouched }}
+          <input type="password" placeholder="password" name="password" [(ngModel)]="password"/>
           <button (click)=fireEvent(username)>login</button>
-        <!-- </form> -->
+        </form>
       </div>
     </div>
   </div>
