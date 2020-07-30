@@ -3,10 +3,20 @@
     <div class="login-page">
       <div class="form">
         <form #userForm="ngForm">
-          <input type="text" #name="ngModel" placeholder="username" name="username" [(ngModel)]="username" class="form-control" required/>
-          {{ name.untouched }}
-          <input type="password" placeholder="password" name="password" [(ngModel)]="password"/>
+          <input type="text" #name="ngModel"  placeholder="username" name="username" [(ngModel)]="username" class="form-control" required/>
+          <div *ngIf="name.invalid && name.touched" style="color: red;">
+            * Field is mandatory
+          </div>
+          <input type="password"  placeholder="password" name="password" [(ngModel)]="password" class="form-control" required minlength="8" #pwd="ngModel" />
+          <div *ngIf="pwd.errors?.minlength" style="color: red;">
+            * Password should be grater than 8 character
+          </div>
+          <div *ngIf="pwd.invalid && pwd.touched" style="color: red;">
+            * Field is mandatory
+          </div>
+         
           <button (click)=fireEvent(username)>login</button>
+          
         </form>
       </div>
     </div>

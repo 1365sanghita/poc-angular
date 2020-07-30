@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login.service';
+import { LoginService } from '../login.service'; 
 
 @Component({
   selector: 'app-login',
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
  
   fireEvent(event){
     
-    if(this.username.trim() !=""){
+    if(this.username.trim() !="" && this.password.trim() != ""){
       this.loginservice.setUserName(`${this.username}`);
       this.loginservice.setLoginStatus(true);
     }
