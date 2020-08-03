@@ -4,19 +4,22 @@
       <div class="form">
         <form #userForm="ngForm">
           <input type="text" #name="ngModel"  placeholder="username" name="username" [(ngModel)]="username" class="form-control" required/>
-          <div *ngIf="name.invalid && name.touched" style="color: red;">
+          <div *ngIf="name.invalid && name.touched" class="validation">
             * Field is mandatory
           </div>
           <input type="password"  placeholder="password" name="password" [(ngModel)]="password" class="form-control" required minlength="8" #pwd="ngModel" />
-          <div *ngIf="pwd.errors?.minlength" style="color: red;">
-            * Password should be grater than 8 character
+          <div *ngIf="pwd.errors?.minlength" class="validation">
+            * Password should be greater than 8 character
           </div>
-          <div *ngIf="pwd.invalid && pwd.touched" style="color: red;">
+          <div *ngIf="pwd.invalid && pwd.touched" class="validation">
             * Field is mandatory
           </div>
          
-          <button (click)=fireEvent(username)>login</button>
-          
+         
+          <button [disabled]="!name.valid || !pwd.valid"(click)=fireEvent(username)>login</button>
+
+          <!-- we are not using the approach cause we are sending the service -  name variable only login button click -->
+          <!-- <button routerLink="/home">login</button> -->
         </form>
       </div>
     </div>
